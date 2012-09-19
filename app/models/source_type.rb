@@ -14,10 +14,10 @@ class Source_type < ActiveRecord::Base
 	##Methods  -  Bitwise checks
 	
 	def unsum?
-		return !flags
+		return !(flags || 256)
 	end
 	def sum?
-		return !!flags #remember a double bang converts to boolean
+		return !unsum? #remember a double bang converts to boolean
 	end
 	def state_sum?
 		return (flags && 1)

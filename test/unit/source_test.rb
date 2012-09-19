@@ -26,6 +26,7 @@ class SourceTest < ActiveSupport::TestCase
 
   test "Source_types exist with methods for sum?" do
     assert Source_type.where(:flags => 0).first.sum?
+    assert Source_type.where(:flags => 1).first.state_sum?
   end
 
 
