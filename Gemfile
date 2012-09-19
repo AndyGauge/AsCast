@@ -1,12 +1,22 @@
 source 'https://rubygems.org'
 
+##Framework
 gem 'rails', '3.2.6'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+##Data
 gem 'sqlite3'
 
+##Parsing
+gem 'nokogiri'
+
+##Asynch
+gem 'eventmachine'
+
+##Development group
+group :development do
+	gem 'pry'
+	gem 'newrelic_rpm'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
