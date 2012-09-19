@@ -1,37 +1,44 @@
 class Source_type < ActiveRecord::Base
-#Source_type allieviates the strain of having SoS giving totals and counties giving partial values
-	attr_accessible :name
-	has_many :sources
+#Flags are set for the following properties:
+#0 - 255 non-development flags
+#0 County sourced information
+#1 State wide sum
+#2 Nation wide sum
+#3 RESERVED
+#0-255 && 256 => development
 
-#Practicing Bitwise operations
-#Source.first.source_type.unsum? => Counties & Presincts
+
+	attr_accessible :name, :flags
+	has_many :sources
+	
+	##Methods  -  Bitwise checks
+	
 	def unsum?
-		return !type
+		return !flags
 	end
 	def sum?
-		#remember a double bang converts to boolean
-		return !!type
+		return !!flags #remember a double bang converts to boolean
 	end
-
 	def state_sum?
-		return (type && 1)
+		return (flags && 1)
 	end
-
 	def national_sum?
-		#national sum must also be a state sum
-		return (type && 2) || (type && 3)
+		return (flags && 2) || (flags && 3) 	#national sum must also be a state sum
+	end
+	def development?
+		return (flags && 256)
+	end
+	def production?
+		return !development?
 	end
 
 ############implemented with seed.rb  Couldn't extend class in that file... v0.2.5 update
 
-	def force_type(_type)
-		type = _type
-		return self
-	end
-	def self.make(_name, _type)
+	
+	def self.make(_name, _flags)
 		tmp_Object = Source_type.new()
 		tmp_Object.name = _name
-		tmp_Object.force_type(_type)
+		tmp_Object.flags = _flags
 		tmp_Object.save()
 		tmp_Object
 	end

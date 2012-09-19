@@ -1,25 +1,23 @@
 
 class Source < ActiveRecord::Base
-  # attr_accessible :title, :body
+  # Source Controller used to receive locations of documents
+  # Initialize as:
+  # Source.new({:url => "http://sub.main.tld/route"})
 
   ##Fields
   attr_accessible :url, :body
 
   ##Associations
   belongs_to :source_type
-  belongs_to :scope_type
 
   ##Validators
   before_save :check_url
 
   ##Methods
-  #def initialize
-  # Source.new({:url => "http://sub.main.tld/route"})
-  
-  
+
   def update_body
-	if check_url
-		#eventmachine to update body, expected 0.1.5  	
+  	if check_url
+	 	   #eventmachine to update body, expected 0.1.5  	
   	end
   end
 
@@ -29,5 +27,4 @@ class Source < ActiveRecord::Base
   	end
   	return
   end
-
 end
