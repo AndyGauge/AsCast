@@ -7,8 +7,8 @@ class CreateSources < ActiveRecord::Migration
     	t.timestamp :last_checked
     	
     	##Relationships
-    	t.int :source_type_id
-    	t.int :scope_type_id
+    	t.integer :source_type_id
+    	t.integer :scope_type_id
 
       t.timestamps
     end
