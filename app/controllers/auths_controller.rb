@@ -1,19 +1,19 @@
 class AuthsController < ApplicationController
   # GET /auths
   # GET /auths.json
-  def index
-    @auths = Auth.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @auths }
-    end
-  end
+#  def index
+#   @auths = Auth.all
+#
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.json { render json: @auths }
+#    end
+#  end
 
   # GET /auths/1
   # GET /auths/1.json
   def show
-    @auth = Auth.find(params[:id])
+    @auth = Auth.where(:key => params[:id]).first
 
     respond_to do |format|
       format.html # show.html.erb
