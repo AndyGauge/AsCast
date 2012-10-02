@@ -23,3 +23,6 @@ controller:
 source
 Feed
 
+nested route:
+/auth/{apiKey}/feed/{identifier}
+/auth/{apiKey}/admin/source
