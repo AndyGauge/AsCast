@@ -5,10 +5,10 @@ class CreateSources < ActiveRecord::Migration
     	t.string :url
     	t.text :body
     	t.timestamp :last_checked
+      t.integer :source_type_id
     	
     	##Relationships
-    	t.integer :source_type_id
-    	t.integer :scope_type_id
+    	#t.references :source_type
 
       t.timestamps
     end

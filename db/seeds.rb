@@ -15,5 +15,12 @@ Source_type.make("Sum of State", 1)
 Source_type.make("Sum of Nation", 2)
 #Source type of 3 equals 2 bitwisely
 
+#Create default admin user
+admin = User.new()
+admin.email = 'e@mail.com'
+admin.password = 'password'
+admin.save()
+
+
 
 
