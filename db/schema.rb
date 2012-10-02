@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919098765) do
+ActiveRecord::Schema.define(:version => 20121001205303) do
+
+  create_table "auths", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "auths", ["key"], :name => "index_auths_on_key"
+
+  create_table "choices", :force => true do |t|
+    t.string   "name"
+    t.integer  "votes"
+    t.integer  "race_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "races", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "ballot"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "source_types", :force => true do |t|
     t.string   "name"
@@ -25,9 +50,16 @@ ActiveRecord::Schema.define(:version => 20120919098765) do
     t.text     "body"
     t.datetime "last_checked"
     t.integer  "source_type_id"
-    t.integer  "scope_type_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

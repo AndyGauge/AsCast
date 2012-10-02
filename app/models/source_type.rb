@@ -1,4 +1,4 @@
-class Source_type < ActiveRecord::Base
+class SourceType < ActiveRecord::Base
 #Flags are set for the following properties:
 #0 - 255 non-development flags
 #0 County sourced information
@@ -17,7 +17,7 @@ class Source_type < ActiveRecord::Base
 		return !(flags || 256)
 	end
 	def sum?
-		return !unsum? #remember a double bang converts to boolean
+		return !unsum? 
 	end
 	def state_sum?
 		return (flags && 1)

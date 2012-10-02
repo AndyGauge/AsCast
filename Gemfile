@@ -9,8 +9,9 @@ gem 'sqlite3'
 ##Parsing
 gem 'nokogiri'
 
-##Asynch
-gem 'eventmachine'
+##All else
+gem 'bcrypt-ruby' , :require => 'bcrypt' #encryption for passwords
+
 
 ##Development group
 group :development do

@@ -1,9 +1,15 @@
 Ascast::Application.routes.draw do
+  resources :choices
+
+  resources :races
+
+  resources :users
+
   resources :auths
 
   resources :auth do
     resources :sources
-    resources :feed
+    resources :feeds
   end
 
   # The priority is based upon order of creation:
