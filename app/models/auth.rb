@@ -10,7 +10,6 @@ class Auth < ActiveRecord::Base
 
    ##methods
 	def generate_token
-      @token = SecureRandom.urlsafe_base64(32)
-		self.key = @token
-	 end
+      self.key = SecureRandom.urlsafe_base64(32)
+	end
 end
